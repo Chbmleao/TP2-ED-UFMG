@@ -5,7 +5,8 @@ g++ -pg -std=c++11 -g -Wall -c src/Main.cpp -o obj/Main.o -I./include/
 g++ -pg -std=c++11 -g -Wall -c src/List.cpp -o obj/List.o -I./include/
 g++ -pg -std=c++11 -g -Wall -c src/Node.cpp -o obj/Node.o -I./include/
 g++ -pg -std=c++11 -g -Wall -c src/Dictionary.cpp -o obj/Dictionary.o -I./include/
-g++ -pg -std=c++11 -g -Wall -o ./bin/tp2.exe  ./obj/memlog.o  ./obj/Main.o  ./obj/List.o  ./obj/Node.o  ./obj/Dictionary.o
+g++ -pg -std=c++11 -g -Wall -c src/Vector.cpp -o obj/Vector.o -I./include/
+g++ -pg -std=c++11 -g -Wall -o ./bin/tp2.exe  ./obj/memlog.o  ./obj/Main.o  ./obj/List.o  ./obj/Node.o  ./obj/Dictionary.o  ./obj/Vector.o
 ./bin//tp2.exe
 make: Leaving directory '/home/carlos/TPS/TP2/TP'
  

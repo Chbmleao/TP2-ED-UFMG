@@ -3,6 +3,7 @@
 #include <fstream>
 #include "Node.hpp"
 #include "List.hpp"
+#include "Vector.hpp"
 #include "Dictionary.hpp"
 
 std::string convertStringToLower(std::string word) {
@@ -76,12 +77,15 @@ int main(int argc, char const *argv[]) {
         }
     } else {
         std::cout << "Could not open the input or output file." << std::endl;
+        return 0;
     }
 
-    words->print();
-    words->printOrder();
+    Vector *vector = words->passListToVector();
+    delete words;
+    vector->quickSort();
+    vector->printOutFile(outputFile);
 
     inputFile.close();
     outputFile.close();
-
+    return 0;
 }

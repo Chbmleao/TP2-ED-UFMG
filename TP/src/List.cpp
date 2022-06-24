@@ -95,7 +95,7 @@ Dictionary* List::removeAtStart() {
     this->first->next = p->next;
     this->size--;
     if (this->first->next == NULL)
-        this->first = this->first;
+        this->last = this->first;
     aux = p->dictionary;
     delete p;
 
@@ -171,41 +171,6 @@ void List::setLettersOrder(std::string order) {
     }    
 }
 
-int List::getCharValue(char c) {
-    c = toupper(c);
-    for (int i = 0; i < MAXLETTERS; i++) {
-        if (c == this->lettersOrder[i])
-            return i;
-    }
-    return -1;
-} 
-
-int List::biggerDictionary(Dictionary dictionary1, Dictionary dictionary2) {
-    // this function returns 1 if the word1 must be first and returns 2 otherwise 
-    int wordSize1 = dictionary1.getWord().size();
-    int wordSize2 = dictionary2.getWord().size();
-
-    for (int i = 0; i < wordSize1 && i < wordSize2; i++) {
-        if (this->getCharValue(dictionary1.getWord()[i]) < this->getCharValue(dictionary2.getWord()[i]))
-            return 1;
-        if (this->getCharValue(dictionary1.getWord()[i]) > this->getCharValue(dictionary2.getWord()[i]))
-            return 2;
-    }
-
-    if (wordSize1 > wordSize2)
-        return 2;
-    else
-        return 1;
-}
-
-void List::swap(Node* next, Node* current, Node* previous) {
-    previous->next = next;
-    current->next = next->next;
-    next->next = current;
-    if (current->next == NULL)
-        this->last = current;
-}
-
 void List::print() {
     Node *p;
 
@@ -238,4 +203,15 @@ void List::clean() {
 
     this->last = this->first;
     this->size = 0;
+}
+
+Vector* List::passListToVector() {
+    Vector *vector = new Vector(this->size);
+    Node *currentNode = this->first->next;
+    for (int i = 0; i < this->size; i++) {
+        vector->writeElement(*(currentNode->dictionary));
+        currentNode = currentNode->next;
+    }
+    vector->setLettersOrder(this->lettersOrder);
+    return vector;
 }

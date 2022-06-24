@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jun 17 10:28:33 2022
+# Make data base, printed on Tue Jun 21 10:00:15 2022
 
 # Variables
 
@@ -65,7 +65,7 @@ LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-1e87c73a-bd37-4a18-b818-07c21137c924.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-6fd67aff-8a23-4233-9936-a9f02b2e8a96.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -79,7 +79,7 @@ PWD = /home/carlos/TPS/TP2/TP
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/15_interop
+WSL_INTEROP = /run/WSL/17_interop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -175,7 +175,7 @@ VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 WSL_DISTRO_NAME = Ubuntu-20.04
 # variable set hash-table stats:
-# Load=82/1024=8%, Rehash=0, Collisions=9/126=7%
+# Load=82/1024=8%, Rehash=0, Collisions=10/132=8%
 
 # Pattern-specific Variable Values
 
@@ -184,10 +184,10 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 # Directories
 
 # . (device 2064, inode 98784): 11 files, no impossibilities.
-# ./src (device 2064, inode 98799): 9 files, no impossibilities.
-# src (device 2064, inode 98799): 9 files, no impossibilities.
+# ./src (device 2064, inode 98799): 10 files, no impossibilities.
+# src (device 2064, inode 98799): 10 files, no impossibilities.
 
-# 29 files, no impossibilities in 3 directories.
+# 31 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -206,7 +206,7 @@ all: build run
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/12=0%
 
 perf: bin//tp2.exe
 #  Implicit rule search has not been done.
@@ -221,41 +221,35 @@ perf: bin//tp2.exe
 	$(EXE) -1 $(ASSETS)entrada100k.txt -p /tmp/entrada100k.out
 	
 
-# Not a target:
-obj/List.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+obj/List.o: src/List.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'List'
+#  Last modified 2022-06-17 22:29:13.1785132
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 61):
+	$(CC) $(CXXFLAGS) -c $< -o $@ -I$(INCLUDE_FOLDER)
 
 obj/Main.o: src/Main.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Main'
-#  Last modified 2022-06-17 02:47:38.2551151
+#  Last modified 2022-06-18 16:47:49.2036732
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := obj/Main.o
-# automatic
-# % := 
-# automatic
-# * := Main
-# automatic
-# + := src/Main.cpp
-# automatic
-# | := 
-# automatic
-# < := src/Main.cpp
-# automatic
-# ^ := src/Main.cpp
-# automatic
-# ? := src/Main.cpp
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/16=6%
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 61):
+	$(CC) $(CXXFLAGS) -c $< -o $@ -I$(INCLUDE_FOLDER)
+
+obj/Dictionary.o: src/Dictionary.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Dictionary'
+#  Last modified 2022-06-17 11:22:57.2685132
+#  File has been updated.
+#  Successfully updated.
 #  recipe to execute (from 'Makefile', line 61):
 	$(CC) $(CXXFLAGS) -c $< -o $@ -I$(INCLUDE_FOLDER)
 
 # Not a target:
-obj/Dictionary.o:
+.SUFFIXES:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -274,22 +268,49 @@ src/memlog.cpp:
 #  File has been updated.
 #  Successfully updated.
 
-build: obj/memlog.o obj/Main.o obj/List.o obj/Node.o obj/Dictionary.o
+build: obj/memlog.o obj/Main.o obj/List.o obj/Node.o obj/Dictionary.o obj/Vector.o
 #  Implicit rule search has not been done.
- 
+#  Implicit/static pattern stem: ''
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
+# automatic
+# @ := build
+# automatic
+ 
+# % := 
+# automatic
+# * := 
+# automatic
+# + := obj/memlog.o obj/Main.o obj/List.o obj/Node.o obj/Dictionary.o obj/Vector.o
+# automatic
+# | := 
+# automatic
+# < := obj/memlog.o
+# automatic
+# ^ := obj/memlog.o obj/Main.o obj/List.o obj/Node.o obj/Dictionary.o obj/Vector.o
+# automatic
+# ? := obj/memlog.o obj/Main.o obj/List.o obj/Node.o obj/Dictionary.o obj/Vector.o
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
+# Load=8/32=25%, Rehash=0, Collisions=3/20=15%
 #  recipe to execute (from 'Makefile', line 58):
 	$(CC) $(CXXFLAGS) -o $(BIN_FOLDER)$(TARGET) $(OBJ)
 
+obj/Node.o: src/Node.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Node'
+#  Last modified 2022-06-17 21:30:48.8585132
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 61):
+	$(CC) $(CXXFLAGS) -c $< -o $@ -I$(INCLUDE_FOLDER)
+
 # Not a target:
-obj/Node.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/Vector.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-18 16:48:30.1636732
+#  File has been updated.
+#  Successfully updated.
 
 mem: bin//tp2.exe
 #  Implicit rule search has not been done.
@@ -305,9 +326,16 @@ mem: bin//tp2.exe
 #  File has not been updated.
 
 # Not a target:
+src/List.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-17 22:01:39.1685132
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
 src/Main.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-17 02:48:10.8751151
+#  Last modified 2022-06-18 16:47:45.8036732
 #  File has been updated.
 #  Successfully updated.
 
@@ -317,6 +345,13 @@ run: bin//tp2.exe
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 64):
 	$(EXE)
+
+# Not a target:
+src/Dictionary.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-17 11:13:25.8585132
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 bin//tp2.exe:
@@ -333,20 +368,36 @@ obj/memlog.o: src/memlog.cpp
 #  recipe to execute (from 'Makefile', line 61):
 	$(CC) $(CXXFLAGS) -c $< -o $@ -I$(INCLUDE_FOLDER)
 
+# Not a target:
+src/Node.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-17 21:03:43.2785132
+#  File has been updated.
+#  Successfully updated.
+
+obj/Vector.o: src/Vector.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Vector'
+#  Last modified 2022-06-18 16:48:32.8536732
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 61):
+	$(CC) $(CXXFLAGS) -c $< -o $@ -I$(INCLUDE_FOLDER)
+
 # files hash-table stats:
-# Load=16/1024=2%, Rehash=0, Collisions=0/45=0%
+# Load=21/1024=2%, Rehash=0, Collisions=0/64=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 38 / storage = 340 B / avg = 8 B
-# current buf: size = 8162 B / used = 340 B / count = 38 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 48 / storage = 452 B / avg = 9 B
+# current buf: size = 8162 B / used = 452 B / count = 48 / avg = 9 B
 
-# strcache performance: lookups = 59 / hit rate = 35%
+# strcache performance: lookups = 74 / hit rate = 35%
 # hash-table stats:
-# Load=38/8192=0%, Rehash=0, Collisions=2/59=3%
-# Finished Make data base on Fri Jun 17 10:28:33 2022
+# Load=48/8192=1%, Rehash=0, Collisions=2/74=3%
+# Finished Make data base on Tue Jun 21 10:00:15 2022
 
  
