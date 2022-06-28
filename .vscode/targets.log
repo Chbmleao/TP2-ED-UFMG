@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jun 24 14:42:25 2022
+# Make data base, printed on Mon Jun 27 22:01:29 2022
 
 # Variables
 
@@ -53,7 +53,7 @@ LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-28d2239f-bf83-4df9-873a-f557ed0c723b.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-e47ffbfc-14e0-4411-8319-89f5a88b25f9.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -67,7 +67,7 @@ PWD = /home/carlos/TPS/TP2
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/16_interop
+WSL_INTEROP = /run/WSL/14_interop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -159,9 +159,9 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 
 # Directories
 
-# . (device 2064, inode 98783): 5 files, no impossibilities.
+# . (device 2064, inode 98783): 7 files, no impossibilities.
 
-# 5 files, no impossibilities in 1 directories.
+# 7 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -211,12 +211,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 13 / storage = 106 B / avg = 8 B
-# current buf: size = 8162 B / used = 106 B / count = 13 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 15 / storage = 142 B / avg = 9 B
+# current buf: size = 8162 B / used = 142 B / count = 15 / avg = 9 B
 
-# strcache performance: lookups = 16 / hit rate = 18%
+# strcache performance: lookups = 18 / hit rate = 16%
 # hash-table stats:
-# Load=13/8192=0%, Rehash=0, Collisions=1/16=6%
-# Finished Make data base on Fri Jun 24 14:42:25 2022
+# Load=15/8192=0%, Rehash=0, Collisions=1/18=6%
+# Finished Make data base on Mon Jun 27 22:01:29 2022
 
  

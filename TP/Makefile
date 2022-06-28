@@ -61,5 +61,5 @@ $(OBJ_FOLDER)%.o: $(SRC_FOLDER)%.cpp
 	$(CC) $(CXXFLAGS) -c $< -o $@ -I$(INCLUDE_FOLDER)
 
 run: $(EXE)
-	$(EXE)
+	$(EXE) -I entrada.txt -O saida.txt -m 5 -s 10 -p /tmp/testlog.out
 

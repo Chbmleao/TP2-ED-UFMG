@@ -1,16 +1,16 @@
 #ifndef NODEHPP
 #define NODEHPP
 
-#include "Dictionary.hpp"
+#include <string>
 
 class Node {
     public:
         Node();
-        Node(Dictionary* dictionary);
+        Node(std::string word);
         ~Node();
 
     private:
-        Dictionary *dictionary;
+        std::string word;
         Node *next;
     
     friend class List;

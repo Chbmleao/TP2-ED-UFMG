@@ -37,20 +37,20 @@ Node* List::setPosition(int pos, bool before=false) {
     return p;    
 }
 
-Dictionary* List::getDictionary(int pos) {
+std::string List::getWord(int pos) {
     Node *p;
 
     p = this->setPosition(pos);
-    return p->dictionary;
+    return p->word;
 }
 
 // insert functions
 
-void List::insertAtStart(Dictionary* dictionary) {
+void List::insertAtStart(std::string word) {
     Node *newNode;
 
     newNode = new Node();
-    newNode->dictionary = dictionary;
+    newNode->word = word;
     newNode->next = this->first->next;
     this->first->next = newNode;
     this->size++;
@@ -59,22 +59,22 @@ void List::insertAtStart(Dictionary* dictionary) {
         this->last = newNode;
 }
 
-void List::insertAtEnd(Dictionary* dictionary) {
+void List::insertAtEnd(std::string word) {
     Node *newNode = new Node();
 
-    newNode->dictionary = dictionary;
+    newNode->word = word;
 
     this->last->next = newNode;
     this->last = newNode;
     this->size++;
 }
 
-void List::insertAtPosition(Dictionary* dictionary, int pos) {
+void List::insertAtPosition(std::string word, int pos) {
     Node *p, *newNode;
 
     p = this->setPosition(pos, true); // set position in current cell
     newNode = new Node();
-    newNode->dictionary = dictionary;
+    newNode->word = word;
     newNode->next = p->next;
     p->next = newNode;
     this->size++;
@@ -85,8 +85,8 @@ void List::insertAtPosition(Dictionary* dictionary, int pos) {
 
 // remove functions
 
-Dictionary* List::removeAtStart() {
-    Dictionary* aux = new Dictionary();
+std::string List::removeAtStart() {
+    std::string aux; 
     Node *p;
 
     erroAssert(!this->isEmpty(), "Empty list!");
@@ -96,14 +96,14 @@ Dictionary* List::removeAtStart() {
     this->size--;
     if (this->first->next == NULL)
         this->last = this->first;
-    aux = p->dictionary;
+    aux = p->word;
     delete p;
 
     return aux;
 }
 
-Dictionary* List::removeAtEnd() {
-    Dictionary* aux;
+std::string List::removeAtEnd() {
+    std::string aux;
     Node *p;
 
     erroAssert(!this->isEmpty(), "Empty list!");
@@ -113,15 +113,15 @@ Dictionary* List::removeAtEnd() {
 
     p->next = NULL;
     this->size--;
-    aux = this->last->dictionary;
+    aux = this->last->word;
     delete this->last;
     this->last = p;
 
     return aux;
 }
 
-Dictionary* List::removeAtPosition(int pos) {
-    Dictionary *aux;
+std::string List::removeAtPosition(int pos) {
+    std::string aux;
     Node *p, *q;
 
     erroAssert(!this->isEmpty(), "Empty list!");
@@ -131,7 +131,7 @@ Dictionary* List::removeAtPosition(int pos) {
     q = p->next;
     p->next = q->next;
     this->size--;
-    aux = q->dictionary;
+    aux = q->word;
     delete q;
     if (p->next == NULL) {
         this->last = p;
@@ -140,8 +140,8 @@ Dictionary* List::removeAtPosition(int pos) {
     return aux;
 }
 
-Dictionary* List::search(std::string word) {
-    Dictionary *aux = new Dictionary("Not found!");
+std::string List::search(std::string word) {
+    std::string aux = "Not found!";
     Node *p;
 
     if (this->isEmpty())
@@ -150,8 +150,8 @@ Dictionary* List::search(std::string word) {
     p = this->first->next;
 
     while (p!=NULL) {
-        if (p->dictionary->getWord() == word) {
-            aux = p->dictionary;
+        if (p->word == word) {
+            aux = p->word;
             break;
         }
         p = p->next;
@@ -176,7 +176,7 @@ void List::print() {
 
     p = this->first->next;
     while(p!=NULL) {
-        p->dictionary->print();
+        std::cout << p->word << " ";
         p = p->next;
     }
 
@@ -209,7 +209,7 @@ Vector* List::passListToVector() {
     Vector *vector = new Vector(this->size);
     Node *currentNode = this->first->next;
     for (int i = 0; i < this->size; i++) {
-        vector->writeElement(*(currentNode->dictionary));
+        vector->writeElement(currentNode->word);
         currentNode = currentNode->next;
     }
     vector->setLettersOrder(this->lettersOrder);

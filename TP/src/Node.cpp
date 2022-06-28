@@ -1,12 +1,12 @@
 #include "Node.hpp"
 
 Node::Node() {
-    this->dictionary = new Dictionary();
+    this->word = "";
     this->next = nullptr;
 }
 
-Node::Node(Dictionary * dictionary) {
-    this->dictionary = dictionary;
+Node::Node(std::string word) {
+    this->word = word;
     this->next = nullptr;
 }
 

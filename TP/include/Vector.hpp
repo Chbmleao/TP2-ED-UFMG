@@ -1,8 +1,6 @@
 #ifndef VECTORHPP
 #define VECTORHPP
 
-#include "Dictionary.hpp"
-
 #define MAXLETTERS 26
 
 class Vector {
@@ -10,24 +8,28 @@ class Vector {
 		Vector();
 		Vector(int size);
 		~Vector();
-		Dictionary* getItems();
+		std::string* getItems();
+		int getSize();
 		int accessVector();
-		void writeElement(Dictionary item);
-		Dictionary readElement(int pos);
+		void writeElement(std::string word);
+		std::string readElement(int pos);
 		void print();
 		void printOrder();
 		void printOutFile(std::ofstream &outputFile);
 		void setLettersOrder(char lettersOrder[MAXLETTERS]);
 		int getCharValue(char c);
-		int biggerDictionary(Dictionary dictionary1, Dictionary dictionary2);
-		void quickSort();
+		int biggerWord(std::string word1, std::string word2);
+		void quickSort(int medianArraySize, int arrayMinimumSize);
 
 	private:
-		Dictionary * items;
+		std::string *items;
 		char lettersOrder[MAXLETTERS];
 		int position;
 		int size;
 		void auxQuickSort(int left, int right);
+		void insertionSort(int left, int right);
+		int medianArraySize;
+		int arrayMinimumSize;
 };
 
 #endif 
