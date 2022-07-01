@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jun 27 22:01:29 2022
+# Make data base, printed on Thu Jun 30 11:51:43 2022
 
 # Variables
 
@@ -53,7 +53,7 @@ LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-e47ffbfc-14e0-4411-8319-89f5a88b25f9.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-1657f94d-ac54-49d7-9b6a-138dea76c4cc.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -67,7 +67,7 @@ PWD = /home/carlos/TPS/TP2
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/14_interop
+WSL_INTEROP = /run/WSL/419_interop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -159,9 +159,9 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 
 # Directories
 
-# . (device 2064, inode 98783): 7 files, no impossibilities.
+# . (device 2064, inode 98783): 8 files, no impossibilities.
 
-# 7 files, no impossibilities in 1 directories.
+# 8 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -211,12 +211,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 15 / storage = 142 B / avg = 9 B
-# current buf: size = 8162 B / used = 142 B / count = 15 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 16 / storage = 168 B / avg = 10 B
+# current buf: size = 8162 B / used = 168 B / count = 16 / avg = 10 B
 
-# strcache performance: lookups = 18 / hit rate = 16%
+# strcache performance: lookups = 19 / hit rate = 15%
 # hash-table stats:
-# Load=15/8192=0%, Rehash=0, Collisions=1/18=6%
-# Finished Make data base on Mon Jun 27 22:01:29 2022
+# Load=16/8192=0%, Rehash=0, Collisions=1/19=5%
+# Finished Make data base on Thu Jun 30 11:51:43 2022
 
  

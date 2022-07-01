@@ -5,11 +5,12 @@
 #include <fstream>
 #include "Vector.hpp"
 #include "msgassert.hpp"
+#include "memlog.hpp"
 
 #define swap(X, Y) { std::string d = X; X = Y; Y = d; };
 
 Vector::Vector() {
-    this->size = -1;
+    this->size = 0;
 }
 
 Vector::Vector(int size) {
@@ -27,14 +28,6 @@ Vector::~Vector() {
     this->size = -1;
 }
 
-std::string* Vector::getItems() {
-    return this->items;
-}
-
-int Vector::getSize() {
-    return this->size;
-}
-
 int Vector::accessVector() {
     std::string aux;
     int s = 0;
@@ -46,9 +39,14 @@ int Vector::accessVector() {
 }
 
 void Vector::writeElement(std::string word) {
-    this->items[this->position] = word;
+    if (position != this->size) {
+        this->items[this->position] = word;
+        this->position += 1;
+    } 
+    else
+        avisoAssert(1, "Vector is already full.");
 
-    this->position += 1;
+    ESCREVEMEMLOG((long int)(&(this->items[this->position])), sizeof(std::string), 1);
 }
 
 std::string Vector::readElement (int pos) {
@@ -74,6 +72,7 @@ void Vector::printOutFile(std::ofstream &outputFile) {
     std::string previousWord = items[0];
     int count = 1;
     for (int i = 1; i < this->size; i++) {
+        LEMEMLOG((long int)(&(this->items[i])), sizeof(std::string), 1);
         if (previousWord == items[i]) {
             count++;
         } else {
@@ -86,6 +85,7 @@ void Vector::printOutFile(std::ofstream &outputFile) {
     outputFile << previousWord << " " << count;
     outputFile << std::endl;
     outputFile << "#FIM";
+    outputFile << std::endl;
 }
 
 void Vector::setLettersOrder(char lettersOrder[MAXLETTERS]) {
@@ -97,7 +97,6 @@ void Vector::setLettersOrder(char lettersOrder[MAXLETTERS]) {
 int Vector::getCharValue(char c) {
     if((int)c < 65)
         return (int)c - 65;
-    c = toupper(c);
     for (int i = 0; i < MAXLETTERS; i++) {
         if (c == this->lettersOrder[i])
             return i;
@@ -132,14 +131,14 @@ void Vector::auxQuickSort(int left, int right) {
     int i = left;
     int j = right;
 
-    if (right - left < this->medianArraySize){
+    if (right - left < this->arrayMinimumSize){
         insertionSort(left, right);
         return;
     }
 
     // choose pivot
     std::string pivot;
-    if (medianArraySize == 1)
+    if (medianArraySize == 1 || right - left < medianArraySize)
         pivot = this->items[(i + j) / 2];
     else {
         insertionSort(left, left + medianArraySize - 1);
@@ -147,12 +146,16 @@ void Vector::auxQuickSort(int left, int right) {
     }
     while(i <= j) {
         while(this->biggerWord(pivot, this->items[i]) == 2 && i < right) {
+            LEMEMLOG((long int)(&(this->items[i])), sizeof(std::string), 1);
             i++;
         }
         while(this->biggerWord(pivot, this->items[j]) == 1 && j > left) {
+            LEMEMLOG((long int)(&(this->items[j])), sizeof(std::string), 1);
             j--;
         }
         if(i <= j) {
+            ESCREVEMEMLOG((long int)(&(this->items[i])), sizeof(std::string), 1);
+            ESCREVEMEMLOG((long int)(&(this->items[j])), sizeof(std::string), 1);
             swap(this->items[i], this->items[j]);
             i++;
             j--;
@@ -179,6 +182,8 @@ void Vector::insertionSort(int left, int right) {
         aux = this->items[i];
         j = i - 1;
         while (j >= left && this->biggerWord(aux, this->items[j]) == 1) {
+            LEMEMLOG((long int)(&(this->items[j])), sizeof(std::string), 1);
+            ESCREVEMEMLOG((long int)(&(this->items[j+1])), sizeof(std::string), 1);
             this->items[j + 1] = this->items[j];
             j--;
         }

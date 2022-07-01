@@ -10,7 +10,7 @@
 #include "memlog.hpp"
 
 typedef struct opt{
-    char logName[100];
+    std::string logName;
     int regmem;
     std::string inputFile;
     std::string outputFile;
@@ -60,7 +60,7 @@ void parse_args(int argc,char ** argv, opt_tipo * opt){
                 opt->arrayMinimumSize = atoi(optarg);
                 break;
             case 'p': 
-                strcpy(opt->logName, optarg);
+                opt->logName = std::string(optarg);
                 break;
             case 'l': 
                 opt->regmem = 1;
@@ -73,19 +73,30 @@ void parse_args(int argc,char ** argv, opt_tipo * opt){
     }
 
     // verify the options consistency
-    if (opt->inputFile.empty()) 
+    if (opt->inputFile.empty()) {
         opt->inputFile = "entrada.txt";
-    if (opt->outputFile.empty()) 
+        avisoAssert(1, "Input File was not passed as parameter, 'entrada.txt' file will be used.");
+    }  
+    if (opt->outputFile.empty()) {
         opt->outputFile = "saida.txt";
-    if (opt->medianArraySize < 1)
+        avisoAssert(1, "Output File was not passed as parameter, 'entrada.txt' file will be used.");
+    }
+    if (opt->medianArraySize < 1) {
         opt->medianArraySize = 1;
-    if (opt->arrayMinimumSize < 1)
+        avisoAssert(1, "Median Array Size was not passed as parameter, 1 value will be used.");
+    }
+    if (opt->arrayMinimumSize < 1) {
+        avisoAssert(1, "Array Minimum Size was not passed as parameter, 1 value will be used.");
         opt->arrayMinimumSize = 1;
-
-    erroAssert(strlen(opt->logName)>0, "main - access log file name has to be set");
+    }
+    if (opt->logName.empty()) {
+        opt->logName = "/tmp/tp2log.out";
+        avisoAssert(1, "Log File Name was not passed as parameter, '/tmp/tp2log.out' value will be used.");
+    }
 }
 
 std::string convertStringToLower(std::string word) {
+    avisoAssert(!(word.empty()), "Empty string!");
     std::string aux;
     for (char c : word) {
         if (c!=',' && c!='.' && c!='!' && c!='?' && c!=':' && c!=';' && c!='_')
@@ -125,15 +136,16 @@ int main(int argc, char **argv) {
     parse_args(argc, argv, &opt);
 
     // access log initialization
-    iniciaMemLog(opt.logName);
+    
+    char logName[opt.logName.size()];
+    strcpy(logName, opt.logName.c_str());
+    iniciaMemLog(logName);
 
     // activate or not the access log
     if (opt.regmem)
         ativaMemLog();
     else   
         desativaMemLog();
-
-    std::cout << opt.medianArraySize << " " << opt.arrayMinimumSize;
 
     std::ifstream inputFile(opt.inputFile);
     std::ofstream outputFile(opt.outputFile);
@@ -157,25 +169,34 @@ int main(int argc, char **argv) {
                     break;
                 
                 case 2:
+                    defineFaseMemLog(0);
                     aux = runText(inputFile, wordsList);
                     break;
 
                 default:
-                    std::cout << "Invalid option. ('#ORDEM' or '#TEXTO')" << std::endl;
+                    erroAssert(option == 0, "Invalid option. File must contain '#ORDEM' and '#TEXTO'.");               
             }
         }
     } else {
-        std::cout << "Could not open the input or output file." << std::endl;
-        return 0;
+        erroAssert(inputFile.is_open(), "Could not open the Input File.");
+        erroAssert(outputFile.is_open(), "Could not open the output file.");
     }
 
+    // pass the list elements to a vector, so we can use the quick sort algorithm 
+    defineFaseMemLog(1);
     Vector *wordsVector = wordsList->passListToVector();
     delete wordsList;
     
+    defineFaseMemLog(2);
     wordsVector->quickSort(opt.medianArraySize, opt.arrayMinimumSize);
+
+    defineFaseMemLog(3);
     wordsVector->printOutFile(outputFile);
+
+    finalizaMemLog();
 
     inputFile.close();
     outputFile.close();
+    
     return 0;
 }

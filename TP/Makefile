@@ -30,7 +30,7 @@ BIN_FOLDER = ./bin/
 OBJ_FOLDER = ./obj/
 SRC_FOLDER = ./src/
 ASSETS = ./assets/
-# OUT_FOLDER = ./out/
+OUT_FOLDER = ./out/
 
 # all sources, objs, and header files
 MAIN = Main
@@ -40,22 +40,28 @@ OBJ = $(patsubst $(SRC_FOLDER)%.cpp, $(OBJ_FOLDER)%.o, $(SRC))
 EXE = $(BIN_FOLDER)/tp2.exe
 ANALISAMEM = ./analisamem/bin/analisamem
 
-all: build run
+all: build
 
 mem: $(EXE)
-	$(EXE) -1 entrada.txt -p /tmp/roundlog.out -l
+	$(EXE) -i entrada.txt -o saida.txt -m 3 -s 1 -p /tmp/textlog.out -l
 
 perf: $(EXE)
-	$(EXE) -1 $(ASSETS)entrada50k.txt -p /tmp/entrada50k.out
-	$(EXE) -1 $(ASSETS)entrada60k.txt -p /tmp/entrada60k.out
-	$(EXE) -1 $(ASSETS)entrada70k.txt -p /tmp/entrada70k.out
-	$(EXE) -1 $(ASSETS)entrada80k.txt -p /tmp/entrada80k.out
-	$(EXE) -1 $(ASSETS)entrada90k.txt -p /tmp/entrada90k.out
-	$(EXE) -1 $(ASSETS)entrada100k.txt -p /tmp/entrada100k.out
-	
+	$(EXE) -i $(ASSETS)200kText.txt -o $(OUT_FOLDER)200kOut.txt -m 3 -s 20 -p /tmp/200kText.out
+	$(EXE) -i $(ASSETS)400kText.txt -o $(OUT_FOLDER)400kOut.txt -m 3 -s 20 -p /tmp/400kText.out
+	$(EXE) -i $(ASSETS)600kText.txt -o $(OUT_FOLDER)600kOut.txt -m 3 -s 20 -p /tmp/600kText.out
+	$(EXE) -i $(ASSETS)800kText.txt -o $(OUT_FOLDER)800kOut.txt -m 3 -s 20 -p /tmp/800kText.out
+	$(EXE) -i $(ASSETS)1000kText.txt -o $(OUT_FOLDER)1000kOut.txt -m 3 -s 20 -p /tmp/1000kText.out
+	$(EXE) -i $(ASSETS)1200kText.txt -o $(OUT_FOLDER)1200kOut.txt -m 3 -s 20 -p /tmp/1200kText.out
+	$(EXE) -i $(ASSETS)1400kText.txt -o $(OUT_FOLDER)1400kOut.txt -m 3 -s 20 -p /tmp/1400kText.out
+	$(EXE) -i $(ASSETS)1600kText.txt -o $(OUT_FOLDER)1600kOut.txt -m 3 -s 20 -p /tmp/1600kText.out
+	$(EXE) -i $(ASSETS)1800kText.txt -o $(OUT_FOLDER)1800kOut.txt -m 3 -s 20 -p /tmp/1800kText.out
+	$(EXE) -i $(ASSETS)2000kText.txt -o $(OUT_FOLDER)2000kOut.txt -m 3 -s 20 -p /tmp/2000kText.out
 
 build: $(OBJ)
 	$(CC) $(CXXFLAGS) -o $(BIN_FOLDER)$(TARGET) $(OBJ)
+
+test: $(EXE)
+	$(EXE) -i $(ASSETS)inputText.txt -o $(OUT_FOLDER)textOut.txt -m 3 -s 20 -p /tmp/inputText.out
 
 $(OBJ_FOLDER)%.o: $(SRC_FOLDER)%.cpp
 	$(CC) $(CXXFLAGS) -c $< -o $@ -I$(INCLUDE_FOLDER)

@@ -1,6 +1,7 @@
 #include <iostream>
 #include "List.hpp"
 #include "msgassert.hpp"
+#include "memlog.hpp"
 
 List::List() {
     this->size = 0;
@@ -24,7 +25,7 @@ bool List::isEmpty(){
 Node* List::setPosition(int pos, bool before=false) {
     Node *p; int i;
 
-    erroAssert(pos <= this->size && pos >= 0, "Invalid Position!");
+    erroAssert(pos < this->size && pos >= 0, "Invalid Position!");
 
     p = this->first;
     for (i = 0; i < pos; i++) {
@@ -67,6 +68,8 @@ void List::insertAtEnd(std::string word) {
     this->last->next = newNode;
     this->last = newNode;
     this->size++;
+
+    ESCREVEMEMLOG((long int)(&(newNode->word)), sizeof(std::string), 0);
 }
 
 void List::insertAtPosition(std::string word, int pos) {
@@ -163,7 +166,7 @@ std::string List::search(std::string word) {
 void List::setLettersOrder(std::string order) {
     int i = 0;
     for(char& c : order) {
-        c = toupper(c);
+        c = tolower(c);
         if (c != ' ' && c != '\0') {
             this->lettersOrder[i] = c;
             i++;
@@ -209,6 +212,7 @@ Vector* List::passListToVector() {
     Vector *vector = new Vector(this->size);
     Node *currentNode = this->first->next;
     for (int i = 0; i < this->size; i++) {
+        LEMEMLOG((long int)(&(currentNode->word)), sizeof(std::string), 0);
         vector->writeElement(currentNode->word);
         currentNode = currentNode->next;
     }
