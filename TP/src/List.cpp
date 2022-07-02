@@ -209,9 +209,9 @@ void List::clean() {
 }
 
 Vector* List::passListToVector() {
-    Vector *vector = new Vector(this->size);
+    Vector *vector = new Vector(this->size-1);
     Node *currentNode = this->first->next;
-    for (int i = 0; i < this->size; i++) {
+    for (int i = 0; i < this->size-1; i++) {
         LEMEMLOG((long int)(&(currentNode->word)), sizeof(std::string), 0);
         vector->writeElement(currentNode->word);
         currentNode = currentNode->next;

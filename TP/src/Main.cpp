@@ -186,7 +186,7 @@ int main(int argc, char **argv) {
     defineFaseMemLog(1);
     Vector *wordsVector = wordsList->passListToVector();
     delete wordsList;
-    
+
     defineFaseMemLog(2);
     wordsVector->quickSort(opt.medianArraySize, opt.arrayMinimumSize);
 

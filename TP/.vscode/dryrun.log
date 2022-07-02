@@ -1,7 +1,10 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/carlos/TPS/TP2/TP'
+g++ -pg -std=c++11 -g -Wall -c src/memlog.cpp -o obj/memlog.o -I./include/
+g++ -pg -std=c++11 -g -Wall -c src/Main.cpp -o obj/Main.o -I./include/
+g++ -pg -std=c++11 -g -Wall -c src/List.cpp -o obj/List.o -I./include/
+g++ -pg -std=c++11 -g -Wall -c src/Node.cpp -o obj/Node.o -I./include/
 g++ -pg -std=c++11 -g -Wall -c src/Vector.cpp -o obj/Vector.o -I./include/
 g++ -pg -std=c++11 -g -Wall -o ./bin/tp2.exe  ./obj/memlog.o  ./obj/Main.o  ./obj/List.o  ./obj/Node.o  ./obj/Vector.o
-./bin//tp2.exe -I entrada.txt -O saida.txt -m 5 -s 10 -p /tmp/testlog.out
 make: Leaving directory '/home/carlos/TPS/TP2/TP'
  

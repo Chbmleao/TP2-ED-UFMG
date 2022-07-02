@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun 30 22:52:52 2022
+# Make data base, printed on Sat Jul  2 12:24:00 2022
 
 # Variables
 
@@ -26,7 +26,6 @@ SRC = $(wildcard $(SRC_FOLDER)*.cpp)
 INCLUDE_FOLDER = ./include/
 # environment
 VSCODE_LOG_NATIVE = false
- 
 # makefile (from 'Makefile', line 37)
 TARGET = tp2.exe
 # automatic
@@ -60,13 +59,13 @@ VSCODE_CWD = /mnt/d/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/carlos/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Python310/Scripts/:/mnt/c/Python310/:/mnt/d/anaconda3:/mnt/d/anaconda3/Library/mingw-w64/bin:/mnt/d/anaconda3/Library/usr/bin:/mnt/d/anaconda3/Library/bin:/mnt/d/anaconda3/Scripts:/mnt/c/MinGW/bin:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/FFmpeg:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/Go/bin:/mnt/c/Users/Micro/AppData/Local/Microsoft/WindowsApps:/mnt/d/Microsoft VS Code/bin:/mnt/c/Users/Micro/AppData/Roaming/npm:/mnt/c/Users/Micro/go/bin
+PATH = /home/carlos/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Python310/Scripts/:/mnt/c/Python310/:/mnt/d/anaconda3:/mnt/d/anaconda3/Library/mingw-w64/bin:/mnt/d/anaconda3/Library/usr/bin:/mnt/d/anaconda3/Library/bin:/mnt/d/anaconda3/Scripts:/mnt/c/MinGW/bin:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/FFmpeg:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/Go/bin:/mnt/c/Users/Micro/AppData/Local/Microsoft/WindowsApps:/mnt/d/Microsoft VS Code/bin:/mnt/c/Users/Micro/AppData/Roaming/npm:/mnt/c/Users/Micro/go/bin:/mnt/c/Program Files/PostgreSQL/14/bin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-c83a31e6-6acb-4bc9-8f23-2a67be7b9788.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-7656c370-ba1a-46f9-96b0-1e4cf868b2bd.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -82,7 +81,7 @@ PWD = /home/carlos/TPS/TP2/TP
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/419_interop
+WSL_INTEROP = /run/WSL/931_interop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -90,7 +89,7 @@ HOME = /home/carlos
 # environment
 LOGNAME = carlos
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 ZSH = /home/carlos/.oh-my-zsh
 # environment
@@ -202,7 +201,7 @@ obj/%.o: src/%.cpp
 
 # Files
 
-all: build run
+all: build
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
@@ -248,7 +247,7 @@ obj/Main.o: src/Main.cpp
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:41:18.7421373
+#  Last modified 2022-06-30 23:09:22.3421373
 #  File has been updated.
 #  Successfully updated.
 
@@ -277,6 +276,7 @@ build: obj/memlog.o obj/Main.o obj/List.o obj/Node.o obj/Vector.o
 	$(CC) $(CXXFLAGS) -o $(BIN_FOLDER)$(TARGET) $(OBJ)
 
 obj/Node.o: src/Node.cpp
+ 
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Node'
 #  Last modified 2022-06-24 21:19:07.4639761
@@ -288,7 +288,7 @@ obj/Node.o: src/Node.cpp
 # Not a target:
 src/Vector.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-30 22:11:43.4921373
+#  Last modified 2022-06-30 23:03:10.6821373
 #  File has been updated.
 #  Successfully updated.
 
@@ -309,7 +309,6 @@ mem: bin//tp2.exe
 src/List.cpp:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-30 14:58:40.7359314
- 
 #  File has been updated.
 #  Successfully updated.
 
@@ -377,7 +376,7 @@ obj/Vector.o: src/Vector.cpp
 	$(CC) $(CXXFLAGS) -c $< -o $@ -I$(INCLUDE_FOLDER)
 
 # files hash-table stats:
-# Load=20/1024=2%, Rehash=0, Collisions=0/59=0%
+# Load=20/1024=2%, Rehash=0, Collisions=0/57=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
@@ -387,9 +386,9 @@ obj/Vector.o: src/Vector.cpp
 # strcache buffers: 1 (0) / strings = 47 / storage = 406 B / avg = 8 B
 # current buf: size = 8162 B / used = 406 B / count = 47 / avg = 8 B
 
-# strcache performance: lookups = 71 / hit rate = 33%
+# strcache performance: lookups = 70 / hit rate = 32%
 # hash-table stats:
-# Load=47/8192=1%, Rehash=0, Collisions=3/71=4%
-# Finished Make data base on Thu Jun 30 22:52:52 2022
+# Load=47/8192=1%, Rehash=0, Collisions=3/70=4%
+# Finished Make data base on Sat Jul  2 12:24:00 2022
 
  
